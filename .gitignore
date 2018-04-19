@@ -1,3 +1,5 @@
 *.sw?
 *.lx2
 *.out
+*.vpp
+*.vcd

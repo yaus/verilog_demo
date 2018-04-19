@@ -21,9 +21,10 @@ always @(posedge clk or negedge rst_n)
 
 assign qin = {qout[6:0],sin};
 
-always @(posedge clk)
+always @(posedge st_clk)
     qout_ff <= qout;
 
 assign dout = oe_n ? 8'hz : qout_ff;
+assign sout = qout[7];
 
 endmodule 
