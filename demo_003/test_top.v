@@ -87,6 +87,7 @@ endtask
 task s2p_drive;
     input val;
     begin
+	@(negedge clk);
         sin = val;
         @(posedge clk);
     end
