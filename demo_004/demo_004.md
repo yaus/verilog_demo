@@ -1,8 +1,9 @@
 # DEMO_004
 
-Objective:
-1. Finite State Machine
-2. Asynchronuse Circuit Design
+Thing to learn:
+1. Finite State Machine (**FSM**)
+2. Cross Clock Domain Logic
 
-
-
+---
+## FSM
+Finite State Machine is most important part in the logic design, since any logic with memory can be descriped as a stat machine. Also, generating **any** logic sequence require a FSM. It can be mearly machine or moore machine.
