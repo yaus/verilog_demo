@@ -1,5 +1,74 @@
-\documentclass[12pt]{article}
-\title{Demo 01}
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{gillius2}
+
+\usepackage{fontspec}
+\setmainfont{Gillius ADF No2}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\definecolor{vgreen}{RGB}{104,180,104}
+\definecolor{vblue}{RGB}{49,49,255}
+\definecolor{vorange}{RGB}{255,143,102}
+
+\lstdefinestyle{verilog-style}
+{
+    language=Verilog,
+    basicstyle=\small\ttfamily,
+    keywordstyle=\color{vblue},
+    identifierstyle=\color{black},
+    commentstyle=\color{vgreen},
+    numbers=left,
+    numberstyle=\small\color{green},
+    numbersep=12pt,
+    tabsize=8,
+    moredelim=*[s][\colorIndex]{[}{]},
+    literate=*{:}{:}1,
+    framexleftmargin=30pt
+}
+
+\makeatletter
+\newcommand*\@lbracket{[}
+\newcommand*\@rbracket{]}
+\newcommand*\@colon{:}
+\newcommand*\colorIndex{%
+    \edef\@temp{\the\lst@token}%
+    \ifx\@temp\@lbracket \color{black}%
+    \else\ifx\@temp\@rbracket \color{black}%
+    \else\ifx\@temp\@colon \color{black}%
+    \else \color{vorange}%
+    \fi\fi\fi
+}
+\makeatother
+
+\title{Demo 01: Icarus Verilog\vspace{-1ex}}
+\author{Eddy Yau\vspace{-2ex}}
+\date{\today}
+
 \begin{document}
-Icarus Verilog
+\maketitle
+\section*{Verilog}
+Verilog and VHDL are the most commonly used \textbf{HDL}(Hardware Description Language) in the world. 
+On the other hand, high-level synthesis will utilize SystemC instead. 
+Comparing with verilog and VHDL, verilog is more easily to study, since verilog is similar to C.
+\newline
+Here is some example code for a NAND gate in verilog:
+
+\lstset{tabsize=2,breaklines=true,numbers=left,basicstyle=footnotesize,xleftmargin=30pt}
+
+\begin{lstlisting}[style={verilog-style},frame=single]{NADN gate}
+module NAND {
+	input  A,
+	input  B,
+	output Z
+};
+// Assign nand-gate logic to Z
+assign Z=~A&B;
+endmodule
+\end{lstlisting}
+
+
+
 \end{document}
