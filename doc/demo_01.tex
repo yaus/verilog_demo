@@ -3,6 +3,22 @@
 \usepackage[a4paper,margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{gillius2}
+\usepackage{calc}
+
+
+\usepackage{hyperref}
+\hypersetup{pdftex,colorlinks=true,allcolors=blue}
+\usepackage{bookmark}
+\bookmarksetup{
+  numbered, 
+  open,
+}
+\usepackage{hypcap}
+
+\usepackage[style=numeric]{biblatex}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\addbibresource{demo\_01.bib}
 
 \usepackage{fontspec}
 \setmainfont{Gillius ADF No2}
@@ -23,7 +39,7 @@
     numbers=left,
     numberstyle=\small\color{green},
     numbersep=12pt,
-    tabsize=8,
+    tabsize=4,
     moredelim=*[s][\colorIndex]{[}{]},
     literate=*{:}{:}1,
     framexleftmargin=30pt
@@ -43,13 +59,13 @@
 }
 \makeatother
 
-\title{Demo 01: Icarus Verilog\vspace{-1ex}}
+\title{Demo 01: Verilog \& Icarus Verilog\vspace{-1ex}}
 \author{Eddy Yau\vspace{-2ex}}
 \date{\today}
 
 \begin{document}
-\maketitle
-\section*{Verilog}
+\maketitle 
+\section{Verilog}
 Verilog and VHDL are the most commonly used \textbf{HDL}(Hardware Description Language) in the world. 
 On the other hand, high-level synthesis will utilize SystemC instead. 
 Comparing with verilog and VHDL, verilog is more easily to study, since verilog is similar to C.
@@ -58,7 +74,8 @@ Here is some example code for a NAND gate in verilog:
 
 \lstset{tabsize=2,breaklines=true,numbers=left,basicstyle=footnotesize,xleftmargin=30pt}
 
-\begin{lstlisting}[style={verilog-style},frame=single]{NADN gate}
+
+\begin{lstlisting}[style={verilog-style},frame=single,caption=NAND.v]{NAND gate}
 module NAND {
 	input  A,
 	input  B,
@@ -69,6 +86,35 @@ assign Z=~A&B;
 endmodule
 \end{lstlisting}
 
+\smallskip
+Declaration for a module:
+\begin{lstlisting}[style={verilog-style},frame=single,firstnumber=1]
+module NAND {
+\end{lstlisting}
 
+\smallskip
+Pin list of the module
+\begin{lstlisting}[style={verilog-style},frame=single,firstnumber=2]
+	input  A,
+	input  B,
+	output Z
+\end{lstlisting}
+
+\smallskip
+Assign combinational logic to output
+\begin{lstlisting}[style={verilog-style},frame=single,firstnumber=7]
+assign Z=~A&B;
+\end{lstlisting}
+
+\smallskip
+End of module declaration
+\begin{lstlisting}[style={verilog-style},frame=single,firstnumber=8]
+endmodule
+\end{lstlisting}
+\section{Icarus Verilog}
+Icarus Verilog is a Verilog simulation and synthesis tool.It operates as a compiler, compiling source code written in Verilog (IEEE-1364) into some target format.\cite{iverilogwebsite} 
+
+\printbibliography
 
 \end{document}
+
