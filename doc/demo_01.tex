@@ -20,6 +20,8 @@
 \usepackage{csquotes}
 \addbibresource{demo\_01.bib}
 
+\setlength{\parindent}{0pt}
+
 \usepackage{fontspec}
 \setmainfont{Gillius ADF No2}
 
@@ -45,6 +47,16 @@
     framexleftmargin=30pt
 }
 
+\usepackage{titlesec}
+ 
+\titleformat{\section} 
+	{\normalfont\Large\bfseries}{\makebox[30pt][l]{\thesection}}{0pt}{} 
+\titleformat{\subsection} 
+	{\normalfont\large\bfseries}{\makebox[30pt][l]{\thesubsection}}{0pt}{}
+
+\renewcommand{\lstlistingname}{Source Code}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{List of \lstlistingname s}% List of Listings -> List of Algorithms
+
 \makeatletter
 \newcommand*\@lbracket{[}
 \newcommand*\@rbracket{]}
@@ -65,7 +77,8 @@
 
 \begin{document}
 \maketitle 
-\section{Verilog}
+\section{Introduction}
+\subsection{Verilog}
 Verilog and VHDL are the most commonly used \textbf{HDL}(Hardware Description Language) in the world. 
 On the other hand, high-level synthesis will utilize SystemC instead. 
 Comparing with verilog and VHDL, verilog is more easily to study, since verilog is similar to C.
@@ -111,9 +124,36 @@ End of module declaration
 \begin{lstlisting}[style={verilog-style},frame=single,firstnumber=8]
 endmodule
 \end{lstlisting}
-\section{Icarus Verilog}
-Icarus Verilog is a Verilog simulation and synthesis tool.It operates as a compiler, compiling source code written in Verilog (IEEE-1364) into some target format.\cite{iverilogwebsite} 
+\subsection{Icarus Verilog}
+Icarus Verilog is a Verilog simulation and synthesis tool.It operates as a compiler, compiling source code written in Verilog (IEEE-1364) into some target format.\cite{iverilogwebsite} It is free to use.
 
+\medskip
+\textbf{Iverilog} is the compiler to synthesis the verilog source code to vvp assembly.
+\textbf{Vvp} is the tool to execute the vvp assembly.
+
+\section{Simulation}
+In this demo, we will create a ``Hello World'' program executing by Icarus Verilog. For this demo, we are using Ubuntu 17.10 dist.
+\subsection{Install}
+First, we install the Icarus Verilog. Open a terminal and install Icarus Verilog via apt
+\begin{lstlisting}[language=bash,basicstyle=\small\ttfamily,framexleftmargin=30pt,frame=single,numbers=none]
+$> sudo apt install iverilog
+\end{lstlisting}
+\subsection{Create verilog source code}
+Create a verilog file as below:
+\begin{lstlisting}[style={verilog-style},frame=single,firstnumber=1,caption=hello\_world.v]
+module hello_world;
+initial begin
+    display(Hello World!);
+    finish;
+end
+endmodule
+\end{lstlisting}
+\subsection{Compile \& Execute}
+\begin{lstlisting}[language=bash,basicstyle=\small\ttfamily,framexleftmargin=30pt,frame=single,numbers=none]
+$> iverilog -o hello_world.vvp hello_world.v
+$> vvp hello_world.vvp
+Hello World!
+\end{lstlisting}
 \printbibliography
 
 \end{document}
