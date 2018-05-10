@@ -4,11 +4,11 @@ UART_TX module demo
 To execute demo_004A
 ```bash
 cd demo_004
-make TARGET=uart_tx 
+make TARGET=uart_tx
 make TARGET=uart_tx view
 ```
 ## demo_0004B
-UART_RX + UART_TX module demo
+UART_RX + UART_TX + Asynchronizer module demo
 To execute demo_004B
 ```bash
 cd demo_004
