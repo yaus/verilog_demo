@@ -12,7 +12,6 @@ module sync
     input  [WIDTH-1:0]  din,
     output [WIDTH-1:0]  dout
 );
-integer i;
 reg [WIDTH-1:0] din_ff[STAGE-1:0];
 
 always @(posedge clk or negedge rst_n) begin
@@ -23,6 +22,7 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 generate
+genvar i;
 for(i=1;i<STAGE;i=i+1) begin:SYNC_STAGE
     always @(posedge clk or negedge rst_n) begin
         if(~rst_n) 
