@@ -68,15 +68,21 @@ always @(*) begin
                     next_state[STOPBIT_STATE] = 1;
                     next_bit_cnt              = 0;
                     next_tx                   = 1;
+                    next_tx_active            = 0;
                 end else begin
                     next_state[DATABITS_STATE] = 1;
                     next_bit_cnt               = bit_cnt + 1;
                     next_tx                    = data[next_bit_cnt];
                 end
             state[STOPBIT_STATE]:
+                if(enable) begin
+                    next_state[STARTBIT_STATE] = 1;
+                    next_tx = 0;
+                    next_tx_active = 1;
+                end
+                else
                 begin
                     next_state[IDLE_STATE] = 1;
-                    next_tx_active         = 0;
                     next_tx                = 1;
                 end
         endcase
