@@ -13,13 +13,19 @@ gray dut
 
 // Don't touch
 integer i;
+reg result;
 initial begin
     din = 0;
+    result = 1;
     for(i=0;i<100000;i=i+1) begin
         random_drive();
         check_gray_code();
         #1;
     end
+    if(result)
+        $display("Tested OK!");
+    else
+        $display("Tested Fail!"); 
 end
 
 task random_drive;
@@ -44,6 +50,7 @@ begin
     endcase
     if(exp_dout != dout)
         $display("%0t: ERROR : exp_dout = %b,  real_dout = %b",$time, exp_dout, dout);
+    result = result & (exp_dout == dout);
 end
 endtask
 endmodule
