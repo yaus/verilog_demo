@@ -1,4 +1,5 @@
 # DEMO_004
+Demo 4 splited to two part. First part introduces a state machine. Second part introduces asynchronous logic. The demo contain a UART TX and a UART RX.
 ## demo_004A
 UART_TX module demo
 To execute demo_004A
