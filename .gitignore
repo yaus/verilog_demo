@@ -3,3 +3,7 @@
 *.out
 *.vvp
 *.vcd
+doc/demo_01.log
+doc/demo_01.aux
+doc/demo_01.synctex(busy)
+doc/demo_01.synctex.gz

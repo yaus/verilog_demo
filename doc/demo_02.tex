@@ -1,0 +1,108 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{gillius2}
+\usepackage{calc}
+
+
+\usepackage{hyperref}
+\hypersetup{pdftex,colorlinks=true,allcolors=blue}
+\usepackage{bookmark}
+\bookmarksetup{
+  numbered, 
+  open,
+}
+\usepackage{hypcap}
+
+\usepackage[style=numeric]{biblatex}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\addbibresource{demo\_02.bib}
+
+\setlength{\parindent}{0pt}
+
+\usepackage{fontspec}
+\setmainfont{Gillius ADF No2}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\definecolor{vgreen}{RGB}{104,180,104}
+\definecolor{vblue}{RGB}{49,49,255}
+\definecolor{vorange}{RGB}{255,143,102}
+
+\lstdefinestyle{verilog-style}
+{
+    language=Verilog,
+    basicstyle=\small\ttfamily,
+    keywordstyle=\color{vblue},
+    identifierstyle=\color{black},
+    commentstyle=\color{vgreen},
+    numbers=left,
+    numberstyle=\small\color{green},
+    numbersep=12pt,
+    tabsize=4,
+    moredelim=*[s][\colorIndex]{[}{]},
+    literate=*{:}{:}1,
+    framexleftmargin=30pt
+}
+
+\usepackage{titlesec}
+ 
+\titleformat{\section} 
+	{\normalfont\Large\bfseries}{\makebox[30pt][l]{\thesection}}{0pt}{} 
+\titleformat{\subsection} 
+	{\normalfont\large\bfseries}{\makebox[30pt][l]{\thesubsection}}{0pt}{}
+
+\renewcommand{\lstlistingname}{Source Code}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{List of \lstlistingname s}% List of Listings -> List of Algorithms
+
+\makeatletter
+\newcommand*\@lbracket{[}
+\newcommand*\@rbracket{]}
+\newcommand*\@colon{:}
+\newcommand*\colorIndex{%
+    \edef\@temp{\the\lst@token}%
+    \ifx\@temp\@lbracket \color{black}%
+    \else\ifx\@temp\@rbracket \color{black}%
+    \else\ifx\@temp\@colon \color{black}%
+    \else \color{vorange}%
+    \fi\fi\fi
+}
+\makeatother
+
+\title{Demo 02: GTKWave\vspace{-1ex}}
+\author{Eddy Yau\vspace{-2ex}}
+\date{\today}
+
+\begin{document}
+\maketitle 
+\section{Introduction}
+\subsection{Waveform}
+\subsection{GTKWave}
+\section{Preparation}
+\subsection{Install}
+First, we install GTKWave. Open a terminal and install GTKWave via apt
+\begin{lstlisting}[language=bash,basicstyle=\small\ttfamily,framexleftmargin=30pt,frame=single,numbers=none]
+$> sudo apt install iverilog
+\end{lstlisting}
+\subsection{Create verilog source code}
+Create a verilog file as below:
+\begin{lstlisting}[style={verilog-style},frame=single,firstnumber=1,caption=hello\_world.v]
+module hello_world;
+initial begin
+    display(Hello World!);
+    finish;
+end
+endmodule
+\end{lstlisting}
+\subsection{Compile \& Execute}
+\begin{lstlisting}[language=bash,basicstyle=\small\ttfamily,framexleftmargin=30pt,frame=single,numbers=none]
+$> iverilog -o hello_world.vvp hello_world.v
+$> vvp hello_world.vvp
+Hello World!
+\end{lstlisting}
+\printbibliography
+
+\end{document}
+
