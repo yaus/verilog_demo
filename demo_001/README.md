@@ -29,13 +29,25 @@ initial         // execute next statement at the start of simulation
 endmodule
 ```
 
-To execute a sequence of code, *begin*-*end* pair is used. The code will execute sequently.
+To execute a sequence of code, *begin*-*end* pair is used.   The code will execute sequently.
 ``` verilog
-module MODULE_NAME;
+module HELLO_WORLD;
 initial
     begin: BLOCK_NAME // Optional
         $display("Hello world!");
         $finish;
     end: BLOCK_NAME // Optional
 endmodule
+```
+
+## Simulation
+Icarus verilog will complie the verilog to intermediate code. Then the intermediate code is executed by a vvp engine.  
+To start simulation, first compile the verilog code to intermediate.
+``` bash
+$ iverilog demo_001.v -o demo_001.vvp
+```
+To execute the intermediate.
+``` bash 
+$ vvp demo_001.vvp
+Hello world!
 ```
