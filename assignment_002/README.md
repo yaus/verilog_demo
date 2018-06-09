@@ -21,10 +21,11 @@ The assign provided a memory model. To compile the FIFO design, few signal requi
 ** as input parameter 
 
 ## FIFO design
-FIFO can be implement as a circular memory with read & write pointer control
+FIFO can be implement as a circular memory with read & write pointer control.
 
 
 ## Memory model
+
 ```sv
 `timescale 1ns/1ps
 module SRAM
