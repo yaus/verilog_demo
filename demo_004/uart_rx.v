@@ -80,7 +80,7 @@ always @(*) begin
                 next_state[DATABITS_STATE] = 1;
         state[STOPBIT_STATE]:
             if(sample_tick) begin
-                next_rx_error = rx_ff;
+                next_rx_error = ~rx_ff;
                 next_state[END_STATE] = 1;
             end else begin
                 next_state[STOPBIT_STATE] = 1;
