@@ -1,4 +1,5 @@
 `timescale 1ns/1ps
+// Dual port memory
 module SRAM
 #(
   parameter WIDTH=8,
@@ -19,7 +20,7 @@ module SRAM
 reg [WIDTH-1:0] mem[DPETH-1:0];
 reg [WIDTH-1:0] rd_out;
 
-assign rd_out = rd_en ? {WIDTH{1'bx}} : mem[rd_addr];
+assign rd_out = ~rd_en ? {WIDTH{1'bx}} : mem[rd_addr];
 assign rd_dout = #1ns rd_out;
 
 always @(*) begin
