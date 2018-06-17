@@ -23,7 +23,6 @@ The assign provided a memory model. To compile the FIFO design, few signal requi
 ## FIFO design
 FIFO can be implement as a circular memory with read & write pointer control.
 
-
 ## Memory model
 
 ```sv
@@ -56,7 +55,9 @@ always @(*) begin
     #1ns mem[wr_addr] = wr_din;
 end
 
-
-
 endmodule
+```
+
+## Testbench
+```sv
 ```
