@@ -1,6 +1,6 @@
 # Assignment 002
 To demonstrate ability of writing a useful code. This assignment require to design a synchronous FIFO.
-The assign provided a memory model. To compile the FIFO design, few signal require to be implemented.
+The assign provided a memory model. To complet the FIFO design, these signals are require to be implemented.
 
 ## FIFO signals & Parameter
 | Parameter | Description |
@@ -14,14 +14,15 @@ The assign provided a memory model. To compile the FIFO design, few signal requi
 | full        | 1     | indicate no space to push the new data |
 | empty       | 1     | indicate no data in the memory |
 | din         | WID**     | data input port |
-| din_push    | 1     | data input valid | 
+| din_wr_en    | 1     | data input valid | 
 | dout        | WID**     | data output port |
-| dout_pop    | 1| data output acquired | 
+| dout_rd_en    | 1| data output acquired | 
 
 ** as input parameter 
 
 ## FIFO design
 FIFO can be implement as a circular memory with read & write pointer control.
+Full and empty signal should dependent on those pointer.
 
 ## Memory model
 This is a dual port memory model.
