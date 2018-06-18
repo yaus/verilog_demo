@@ -24,7 +24,7 @@ The assign provided a memory model. To compile the FIFO design, few signal requi
 FIFO can be implement as a circular memory with read & write pointer control.
 
 ## Memory model
-
+This is a dual port memory model.
 ```sv
 `timescale 1ns/1ps
 // Dual port memory
